@@ -1,0 +1,478 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+    <script>
+        function pagetwonav()
+        {
+
+            window.location.href = "#pagetwo";
+            var r = document.getElementById("name").value;
+            document.getElementById("show").innerHTML = r;
+        }
+
+        function numcal()
+        {
+            window.location.href = "#pagetwo";
+        }
+
+        function strcal() {
+            window.location.href = "#pagethree";
+        }
+
+        function hcfcal() {
+            window.location.href = "#twop1";
+        }
+
+        function lcmcal() {
+            window.location.href = "#twop2";
+        }
+
+        function ratcal() {
+            window.location.href = "#twop3";
+        }
+
+        function percal() {
+            window.location.href = "#twop4";
+        }
+
+        function lsubcal() {
+            window.location.href = "#threep2";
+        }
+        function lstrcal() {
+            window.location.href = "#threep1";
+        }
+
+        function HCF()
+        {
+
+            window.location.href = "#twop1";
+            var a = document.getElementById("hcfnum1").value;
+            var b = document.getElementById("hcfnum2").value;
+           // if (b == '')
+             //   alert("found");
+            var t;
+           // alert(a);
+            //alert(b);
+            if (a == '' || b == '')
+                document.getElementById("showhcf").innerHTML = "INVALID INPUT ";
+            else {
+                while (b != 0) {
+                    t = b;
+                    b = a % b;
+                    a = t;
+                }
+                document.getElementById("showhcf").innerHTML = "H.C.F of these two numbers is  " + a;
+            }
+        }
+
+
+        function LCM()
+        {
+
+            window.location.href = "#twop2";
+            var a = document.getElementById("lcmnum1").value;
+            var b = document.getElementById("lcmnum2").value;
+            if (a == '' || b == '')
+                document.getElementById("showlcm").innerHTML = "INVALID INPUT ";
+            else {
+                var t;
+                var m = a * b;
+                while (b != 0) {
+                    t = b;
+                    b = a % b;
+                    a = t;
+                }
+                var l = m / a;
+                document.getElementById("showlcm").innerHTML = "L.C.M of these two numbers is  " + l;
+            }
+        }
+
+
+
+        function RATIO()
+        {
+            window.location.href = "#twop3";
+            var a = document.getElementById("rionum1").value;
+            var b = document.getElementById("rionum2").value;
+            var t;
+            if (a == '' || b == '')
+                document.getElementById("showratio").innerHTML = "INVALID INPUT ";
+            else {
+                var m = a;
+                var n = b;
+                while (b != 0) {
+                    t = b;
+                    b = a % b;
+                    a = t;
+                }
+                var l = m / a;
+                var c = n / a;
+                document.getElementById("showratio").innerHTML = "RATIO of these two numbers is  " + (l + "/" + c);
+            }
+        }
+
+        function PERCENT()
+        {
+            window.location.href = "#twop4";
+            var a = document.getElementById("pernum1").value;
+            var b = document.getElementById("pernum2").value;
+            if (a == '' || b == '')
+                document.getElementById("showper").innerHTML = "INVALID INPUT ";
+            else {
+                var l = a / b;
+                var c = l * 100;
+                document.getElementById("showper").innerHTML = "PERCENTAGE is  " + c;
+            }
+        }
+
+
+
+
+        function LCS()
+        {
+            //  var dp[[]];
+            var dp = new Array(100);
+            for (var i = 0; i < 100; i++)
+            {
+                dp[i] = new Array(100);
+            }
+
+            window.location.href ="#threep1";
+            var a = document.getElementById("lcsnum1").value;
+            var b = document.getElementById("lcsnum2").value;
+            if (a == '' || b == '')
+                document.getElementById("showlcs").innerHTML = "INVALID INPUT ";
+            else {
+                var result = 0;
+                var l1 = a.length;
+                var l2 = b.length;
+                for (var i = 0; i <= l1; i++) {
+                    for (var j = 0; j <= l2; j++) {
+                        if (i == 0 || j == 0)
+                            dp[i][j] = 0;
+
+                        else if (a[i - 1] == b[j - 1])              // same same mtch pe diagonal  se 1 jyada
+                        {
+                            // alert(a[i - 1]);
+                            dp[i][j] = dp[i - 1][j - 1] + 1;
+                            result = Math.max(result, dp[i][j]);
+                            // alert(result);
+                        }
+
+                        else { dp[i][j] = 0; }
+                    }
+                }
+                var remi, remj, kk;
+                var k = new Array(result + 1);
+                var fl = 0;
+                  for (var i = 0; i <= l1; i++) {
+                    for (var j = 0; j <= l2; j++) {
+                        if (dp[i][j] == result)
+                        { fl = 1;remi = i; remj = j; break;}
+                    }
+                    if (fl == 1) break;
+                }
+                kk = remi-result;
+                for (var cc = kk; cc <remi;cc++)
+                {
+                    k= k + a[cc];
+                }
+               // alert("hii" + k);
+
+                document.getElementById("showlcs").innerHTML = "Length of Longest substring  is  " + result;
+                document.getElementById("lcsis").innerHTML = "Longest common substring  is  " + k;
+            }
+        }
+
+
+       
+
+        function LCSEQUENCE()
+        {
+            //  var dp[[]];
+            var dp = new Array(100);
+            for (var i = 0; i < 100; i++)
+                dp[i] = new Array(100);
+            
+            window.location.href = "#threep2";
+            var a = document.getElementById("lcsqnum1").value;
+            var b = document.getElementById("lcsqnum2").value;
+            if (a == '' || b == '')
+                document.getElementById("showlcsq").innerHTML = "INVALID INPUT ";
+            else {
+                var l1 = a.length;
+                var l2 = b.length;
+
+                for (i = 0; i <= l1; i++) {
+                    for (j = 0; j <= l2; j++) {
+                        if (i == 0 || j == 0)
+                            dp[i][j] = 0;
+
+                        else if (a[i - 1] == b[j - 1])       // same same mtch pe diagonal  se 1 jyada
+                            dp[i][j] = dp[i - 1][j - 1] + 1;
+
+                        else
+                            dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+                    }
+                }
+
+                var m=l1;
+                var n=l2;
+                // Following code is used to print LCS
+                var index = dp[m][n];
+ 
+           
+                var lcs =new Array(index+1);
+                lcs[index] ;
+           
+               
+                var i = m;
+                var j = n;
+                while (i > 0 && j > 0)
+                {
+                    if (a[i-1] == b[j-1])
+                    {
+                        
+                        lcs[index - 1] = a[i - 1];
+                        i--; j--; index--;     
+                    }
+ 
+                    else if (dp[i-1][j] > dp[i][j-1])
+                        i--;
+                    else
+                        j--;
+                }
+ 
+                document.getElementById("showlcsq").innerHTML = "Length of longest subsequence  is  " + dp[l1][l2];
+
+                document.getElementById("lcsqis").innerHTML = "and longest subsequence  is  " + lcs;
+
+            }
+        }
+
+    </script>
+</head>
+
+
+
+<body bgcolor="#E6E6FA">
+    <div data-role="page" id="pageone">
+        <div data-role="header">
+            <h1> welcome  to programming calculator </h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <p>SELECT </p>
+            <input type="button" width="48" height="48" value="NUMBER CALCULATOR" onclick="numcal()" />
+            <input type="button" width="48" height="48" value="STRING CALCULATOR" onclick="strcal()" />
+        </div>
+
+
+        <div data-role="footer" data-position="fixed">
+            <h1> &copy; Nikhil </h1>
+        </div>
+
+    </div>
+
+
+
+
+    <div data-role="page" id="pagetwo">
+
+        <div data-role="header">
+            <input type="button" value="Back" onclick="history.go(-1);return true;">
+            <h1> WELCOME TO NUMBER CALCULATOR </h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+                <input type="button" width="48" height="48" value="H.C.F OF TWO NUMBERS" onclick="hcfcal()" />
+                <input type="button" width="48" height="48" value="L.C.M OF TWO NUMBERS" onclick="lcmcal()" />
+                <input type="button" width="48" height="48" value="RATIO OF TWO NUMBERS" onclick="ratcal()" />
+                <input type="button" width="48" height="48" value="PERCENTAGE BETWEEN TWO NUMBERS" onclick="percal()" />
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h1> NUMBER CALCULATOR </h1>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div data-role="page" id="twop1">
+
+        <div data-role="header">
+            <input type="button" value="Back" onclick="history.go(-1);return true;">
+            <h1> H.C.F OF TWO NUMBERS </h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <input type="text" id="hcfnum1" placeholder="ENTER THE FIRST NUMBER " />
+            <input type="text" id="hcfnum2" placeholder="ENTER THE SECOND NUMBER " />
+            <input type="button" value="go" id="button" onclick="HCF()" />
+        </div>
+
+        <label id="showhcf"> </label>
+
+        <div data-role="footer" data-position="fixed">
+            <h1> NUMBER CALCULATOR </h1>
+        </div>
+    </div>
+
+
+
+
+    <div data-role="page" id="twop2">
+
+        <div data-role="header">
+            <input type="button" value="Back" onclick="history.go(-1);return true;">
+            <h1> L.C.M OF TWO NUMBERS </h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <input type="text" id="lcmnum1" placeholder="ENTER THE FIRST NUMBER " />
+            <input type="text" id="lcmnum2" placeholder="ENTER THE SECOND NUMBER " />
+            <input type="button" value="go" id="button" onclick="LCM()" />
+        </div>
+
+    
+        <label id="showlcm"> </label>
+
+        <div data-role="footer" data-position="fixed">
+            <h1> NUMBER CALCULATOR </h1>
+        </div>
+    </div>
+
+
+
+
+    <div data-role="page" id="twop3">
+
+        <div data-role="header">
+            <input type="button" value="Back" onclick="history.go(-1);return true;">
+            <h1> RATIO OF TWO NUMBERS </h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <input type="text" id="rionum1" placeholder="ENTER THE FIRST NUMBER " />
+            <input type="text" id="rionum2" placeholder="ENTER THE SECOND NUMBER " />
+            <input type="button" value="go" id="button" onclick="RATIO()" />
+        </div>
+
+    
+        <label id="showratio"> </label>
+
+        <div data-role="footer" data-position="fixed">
+            <h1> NUMBER CALCULATOR </h1>
+        </div>
+    </div>
+
+
+
+
+    <div data-role="page" id="twop4">
+
+        <div data-role="header">
+            <input type="button" value="Back" onclick="history.go(-1);return true;">
+            <h1> PERCENTAGE BETWEEN TWO NUMBERS </h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <input type="text" id="pernum1" placeholder="ENTER THE FIRST NUMBER " /> is what percent of
+            <input type="text" id="pernum2" placeholder="ENTER THE SECOND NUMBER " />
+            <input type="button" value="go" id="button" onclick="PERCENT()" />
+        </div>
+
+        
+        <label id="showper"> </label>
+
+        <div data-role="footer" data-position="fixed">
+            <h1> NUMBER CALCULATOR </h1>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <div data-role="page" id="pagethree">
+        <div data-role="header">
+            <input type="button" value="Back" onclick="history.go(-1);return true;">
+            <h1> WELCOME TO STRING CALCULATOR </h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+                <input type="button" width="48" height="48" value="LONGEST COMMON SUBSTRING BETWEEN TWO STRINGS"   onclick="lstrcal()" />
+                <input type="button" width="48" height="48" value="LONGEST COMMON SUBSEQUENCE BETWEEN TWO STRINGS" onclick="lsubcal()" />
+        </div>
+
+        <div data-role="footer" data-position="fixed">
+            <h1> STRING CALCULATOR </h1>
+        </div>
+    </div>
+
+
+
+
+    <div data-role="page" id="threep1">
+
+        <div data-role="header">
+            <input type="button" value="Back" onclick="history.go(-1);return true;">
+            <h1> LONGEST COMMON SUBSTRING BETWEEN TWO STRINGS </h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <input type="text" id="lcsnum1" placeholder="ENTER THE FIRST STRING" /> 
+            <input type="text" id="lcsnum2" placeholder="ENTER THE SECOND STRING  " />
+            <input type="button" value="go" id="button" onclick="LCS()" />
+        </div>
+
+       
+        <label id="showlcs"> </label>
+        <label id="lcsis"> </label>
+
+        <div data-role="footer" data-position="fixed">
+            <h1> STRING CALCULATOR </h1>
+        </div>
+    </div>
+
+
+
+    <div data-role="page" id="threep2">
+
+        <div data-role="header">
+            <input type="button" value="Back" onclick="history.go(-1);return true;">
+            <h1> LONGEST COMMON SUBSEQUENCE BETWEEN TWO STRINGS </h1>
+        </div>
+
+        <div data-role="main" class="ui-content">
+            <input type="text" id="lcsqnum1" placeholder="ENTER THE FIRST STRING" />
+            <input type="text" id="lcsqnum2" placeholder="ENTER THE SECOND STRING  " />
+            <input type="button" value="go" id="button" onclick="LCSEQUENCE()" />
+        </div>
+
+        <label id="showlcsq"> </label>
+        <label id="lcsqis"> </label>
+
+        <div data-role="footer" data-position="fixed">
+            <h1> STRING CALCULATOR </h1>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+{
+  "ProjectName": "programming_Cal",
+  "ProjectGuid": "0353f54b-b060-4a9a-8d37-02a69f4486e2",
+  "projectVersion": 1,
+  "AppIdentifier": "com.telerik.programmingCal",
+  "DisplayName": "programming_Cal",
+  "Author": "",
+  "Description": "programming_Cal",
+  "BundleVersion": "1.0",
+  "AndroidVersionCode": "1",
+  "iOSDeviceFamily": [
+    "1",
+    "2"
+  ],
+  "iOSBackgroundMode": [],
+  "ProjectTypeGuids": "{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}",
+  "FrameworkVersion": "3.7.0",
+  "AndroidPermissions": [
+    "android.permission.INTERNET"
+  ],
+  "DeviceOrientations": [
+    "Portrait",
+    "Landscape"
+  ],
+  "AndroidHardwareAcceleration": "false",
+  "iOSStatusBarStyle": "Default",
+  "Framework": "Cordova",
+  "WP8TileTitle": "",
+  "WP8Publisher": "",
+  "WP8Capabilities": [
+    "ID_CAP_NETWORKING",
+    "ID_CAP_WEBBROWSERCOMPONENT"
+  ],
+  "WP8Requirements": [],
+  "WP8PublisherID": "{ec050aa1-8a0c-40a0-a9f0-8d44fc18bbc4}",
+  "WP8ProductID": "{4e209af1-dc80-49b5-ba4b-c9f6b1004b3b}",
+  "WPSdk": "8.0",
+  "WP8PackageIdentityName": "1234Telerik.programmingCal",
+  "WP8WindowsPublisherName": "CN=Telerik",
+  "WP8SupportedResolutions": [
+    "ID_RESOLUTION_WVGA",
+    "ID_RESOLUTION_WXGA",
+    "ID_RESOLUTION_HD720P"
+  ]
+}
